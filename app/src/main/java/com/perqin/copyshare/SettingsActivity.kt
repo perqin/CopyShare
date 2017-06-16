@@ -1,7 +1,9 @@
 package com.perqin.copyshare
 
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceFragment
+import android.preference.SwitchPreference
 import android.support.v7.app.AppCompatActivity
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,6 +21,20 @@ class SettingsActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
 
             addPreferencesFromResource(R.xml.pref_settings)
+
+            enableServicePreference.setOnPreferenceChangeListener { _, checkedObj ->
+                if (checkedObj as Boolean) {
+                    activity.startService(Intent(activity, CopyListenerService::class.java))
+                } else {
+                    activity.stopService(Intent(activity, CopyListenerService::class.java))
+                }
+
+                true
+            }
+        }
+
+        val enableServicePreference by lazy {
+            findPreference(getString(R.string.pk_enable_service)) as SwitchPreference
         }
     }
 }

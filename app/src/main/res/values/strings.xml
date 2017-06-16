@@ -2,4 +2,7 @@
     <string name="app_name">Copy &amp; Share</string>
     <string name="pref_description_enable_service">Enable Copy and Share service</string>
     <string name="pref_title_social_recommendations">Enable service</string>
+
+    <!-- Preference Keys -->
+    <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
 </resources>
