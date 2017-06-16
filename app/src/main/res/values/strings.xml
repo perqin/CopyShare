@@ -5,4 +5,7 @@
 
     <!-- Preference Keys -->
     <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
+    <string name="notification_title_new_text_copied">New text copied</string>
+    <string name="share">Share</string>
+    <string name="chooser_title">Send clipped text</string>
 </resources>
