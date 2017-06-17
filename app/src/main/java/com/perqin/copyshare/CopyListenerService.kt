@@ -1,5 +1,6 @@
 package com.perqin.copyshare
 
+import android.app.ActivityManager
 import android.app.NotificationManager
 import android.app.Service
 import android.content.*
@@ -56,5 +57,14 @@ class CopyListenerService : Service() {
 
     companion object {
         val TAG = "CopyListenerService"
+
+        fun isStarted(context: Context) : Boolean {
+            val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            // Though getRunningServices is deprecated in API 26, it still returns app's own services
+            @Suppress("DEPRECATION")
+            return am.getRunningServices(Integer.MAX_VALUE).any {
+                CopyListenerService::class.java.name == it.service.className
+            }
+        }
     }
 }

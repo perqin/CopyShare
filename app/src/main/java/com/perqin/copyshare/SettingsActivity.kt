@@ -33,6 +33,11 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
+        override fun onResume() {
+            super.onResume()
+            enableServicePreference.isChecked = CopyListenerService.isStarted(activity)
+        }
+
         val enableServicePreference by lazy {
             findPreference(getString(R.string.pk_enable_service)) as SwitchPreference
         }
