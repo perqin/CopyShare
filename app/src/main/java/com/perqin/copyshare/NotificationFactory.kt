@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger
  * Date  : 6/16/17
  */
 
+val CHANNEL_ID_DEFAULT = "default"
 val atomicInteger = AtomicInteger()
 
 fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item?) : Notification? {
@@ -24,12 +25,11 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
     intent.putExtra(Intent.EXTRA_TEXT, item.text)
     intent.type = "text/plain"
     val pendingIntent = PendingIntent.getActivity(context, 0, Intent.createChooser(intent, context.getString(R.string.chooser_title)), PendingIntent.FLAG_UPDATE_CURRENT)
-    val action = NotificationCompat.Action.Builder(R.drawable.ic_send_black_24dp, context.getString(R.string.share), pendingIntent).build()
-    return NotificationCompat.Builder(context)
+    return NotificationCompat.Builder(context, CHANNEL_ID_DEFAULT)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(context.getString(R.string.notification_title_new_text_copied))
             .setContentText(item.text)
-            .addAction(action)
+            .setContentIntent(pendingIntent)
             .build()
 }
 

@@ -12,11 +12,13 @@ import android.preference.PreferenceManager
 
 class StartServiceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        val enable = PreferenceManager
-                .getDefaultSharedPreferences(context.applicationContext)
-                .getBoolean(context.getString(R.string.pk_enable_service), false)
-        if (enable) {
-            context.startService(Intent(context, CopyListenerService::class.java))
+        if (intent?.action == Intent.ACTION_BOOT_COMPLETED || intent?.action == Intent.ACTION_MY_PACKAGE_REPLACED) {
+            val enable = PreferenceManager
+                    .getDefaultSharedPreferences(context.applicationContext)
+                    .getBoolean(context.getString(R.string.pk_enable_service), false)
+            if (enable) {
+                context.startService(Intent(context, CopyListenerService::class.java))
+            }
         }
     }
 }
