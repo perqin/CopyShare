@@ -2,11 +2,17 @@
     <string name="app_name">Copy &amp; Share</string>
     <string name="pref_description_enable_service">Enable Copy and Share service</string>
     <string name="pref_enable_service">Enable service</string>
+    <string name="pref_description_heads_up_notification">Enable heads-up notification</string>
+    <string name="pref_heads_up_notification">Heads-up notification</string>
     <string name="notification_title_new_text_copied">New text clipped, click to share</string>
     <string name="chooser_title">Send clipped text</string>
-    <string name="channel_name_default">Default</string>
-    <string name="channel_description_default">Channel for new copied text detected</string>
+    <string name="channel_name_normal">Normal</string>
+    <string name="channel_description_normal">Channel for new copied text detected.</string>
+    <string name="channel_name_heads_up">Heads-up</string>
+    <string name="channel_description_heads_up">Channel for new copied text detected, displayed as heads-up notification.</string>
 
     <!-- Preference Keys -->
     <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
+    <string name="pk_heads_up_notification" translatable="false">HEADS_UP_NOTIFICATION</string>
+    <string name="toast_you_have_to_disable_the_sound_manually">You have to disable the sound manually in this app\'s notification settings</string>
 </resources>

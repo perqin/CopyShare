@@ -43,11 +43,11 @@ class CopyListenerService : Service() {
         }
     }
 
-    var listenerAdded = false
-    val clipboardManager by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
-    val notificationManager by lazy { getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
-    val uiHandler by lazy { Handler(Looper.getMainLooper()) }
-    val onPrimaryClipChangedListener = ClipboardManager.OnPrimaryClipChangedListener {
+    private var listenerAdded = false
+    private val clipboardManager by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
+    private val notificationManager by lazy { getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
+    private val uiHandler by lazy { Handler(Looper.getMainLooper()) }
+    private val onPrimaryClipChangedListener = ClipboardManager.OnPrimaryClipChangedListener {
         for (i in 1..clipboardManager.primaryClip.itemCount) {
             notifyUserOfClipItem(clipboardManager.primaryClipDescription, clipboardManager.primaryClip.getItemAt(i - 1))
         }

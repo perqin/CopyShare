@@ -5,6 +5,11 @@
     <string name="notification_title_new_text_copied">剪切板有新文本，点击分享</string>
     <string name="pref_enable_service">启用服务</string>
     <string name="chooser_title">发送剪切板文本</string>
-    <string name="channel_name_default">默认</string>
-    <string name="channel_description_default">检测到剪切板有新文本时推送的频道</string>
+    <string name="channel_name_normal">普通通知</string>
+    <string name="channel_description_normal">检测到剪切板有新文本时推送的频道。</string>
+    <string name="pref_description_heads_up_notification">启用浮动通知</string>
+    <string name="pref_heads_up_notification">浮动通知</string>
+    <string name="channel_name_heads_up">浮动通知</string>
+    <string name="channel_description_heads_up">检测到剪切板有新文本时推送的频道，以浮动通知的形式展现。</string>
+    <string name="toast_you_have_to_disable_the_sound_manually">你需要手动在本应用的通知设置里关闭浮动通知提示音。</string>
 </resources>
