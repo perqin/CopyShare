@@ -21,9 +21,11 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".CopyListenerService" android:enabled="true" />
+        <service
+            android:name=".CopyListenerService"
+            android:enabled="true" />
 
-        <receiver android:name=".StartServiceReceiver" >
+        <receiver android:name=".StartServiceReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -31,6 +33,11 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".UrlSelectorActivity"
+            android:theme="@style/AppTheme.Transparent"
+            android:noHistory="true" />
     </application>
 
 </manifest>

@@ -10,6 +10,8 @@
     <string name="channel_description_normal">Channel for new copied text detected.</string>
     <string name="channel_name_heads_up">Heads-up</string>
     <string name="channel_description_heads_up">Channel for new copied text detected, displayed as heads-up notification.</string>
+    <string name="action_open_url">Open URL</string>
+    <string name="select_url">Select URL</string>
 
     <!-- Preference Keys -->
     <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
