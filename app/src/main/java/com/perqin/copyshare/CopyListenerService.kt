@@ -54,7 +54,7 @@ class CopyListenerService : Service() {
     }
 
     companion object {
-        val TAG = "CopyListenerService"
+        const val TAG = "CopyListenerService"
 
         fun isStarted(context: Context) : Boolean {
             val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager

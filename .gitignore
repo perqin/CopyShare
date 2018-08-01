@@ -9,3 +9,7 @@
 /captures
 .externalNativeBuild
 keystore.properties
+# Visual Studio Code
+.classpath
+.project
+.settings

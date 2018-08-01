@@ -3,32 +3,34 @@ package com.perqin.copyshare
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceFragment
-import android.preference.SwitchPreference
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        fragmentManager
+        supportFragmentManager
                 .beginTransaction()
                 .replace(android.R.id.content, SettingsFragment())
                 .commit()
     }
 
-    class SettingsFragment : PreferenceFragment() {
+    class SettingsFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.pref_settings, null)
+        }
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
-            addPreferencesFromResource(R.xml.pref_settings)
-
             enableServicePreference.setOnPreferenceChangeListener { _, checkedObj ->
                 if (checkedObj as Boolean) {
-                    activity.startService(Intent(activity, CopyListenerService::class.java))
+                    activity!!.startService(Intent(activity, CopyListenerService::class.java))
                 } else {
-                    activity.stopService(Intent(activity, CopyListenerService::class.java))
+                    activity!!.stopService(Intent(activity, CopyListenerService::class.java))
                 }
                 true
             }
@@ -42,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onResume() {
             super.onResume()
-            enableServicePreference.isChecked = CopyListenerService.isStarted(activity)
+            enableServicePreference.isChecked = CopyListenerService.isStarted(activity!!)
         }
 
         private val enableServicePreference by lazy {
