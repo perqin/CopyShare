@@ -14,6 +14,11 @@ import android.util.Log
  * Date  : 6/16/17
  */
 class CopyListenerService : Service() {
+    override fun onCreate() {
+        super.onCreate()
+        startForeground(NOTIFICATION_ID_FOREGROUND_SERVICE, getForegroundServiceNotification(this))
+    }
+
     override fun onBind(p0: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {

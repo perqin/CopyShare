@@ -17,7 +17,10 @@ import java.util.concurrent.atomic.AtomicInteger
 
 const val CHANNEL_ID_NORMAL = "normal"
 const val CHANNEL_ID_HEADS_UP = "heads_up"
-val atomicInteger = AtomicInteger()
+const val CHANNEL_ID_FOREGROUND_SERVICE = "foreground_service"
+const val NOTIFICATION_ID_FOREGROUND_SERVICE = 1
+// 1 is reserved for foreground service
+val atomicInteger = AtomicInteger(1)
 
 fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item?) : Notification? {
     if (item == null) return null
@@ -54,3 +57,11 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
 }
 
 fun getNotificationId() : Int = atomicInteger.incrementAndGet()
+
+fun getForegroundServiceNotification(context: Context): Notification {
+    return NotificationCompat.Builder(context, CHANNEL_ID_FOREGROUND_SERVICE)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(context.getString(R.string.notification_title_foreground_service))
+            .setPriority(NotificationCompat.PRIORITY_MIN)
+            .build()
+}

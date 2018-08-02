@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.preference.PreferenceManager
+import androidx.core.content.ContextCompat
 
 /**
  * Author: perqin
@@ -17,7 +18,7 @@ class StartServiceReceiver : BroadcastReceiver() {
                     .getDefaultSharedPreferences(context.applicationContext)
                     .getBoolean(context.getString(R.string.pk_enable_service), false)
             if (enable) {
-                context.startService(Intent(context, CopyListenerService::class.java))
+                ContextCompat.startForegroundService(context, Intent(context, CopyListenerService::class.java))
             }
         }
     }
