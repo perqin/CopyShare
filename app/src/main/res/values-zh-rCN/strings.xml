@@ -14,4 +14,7 @@
     <string name="toast_you_have_to_disable_the_sound_manually">你需要手动在本应用的通知设置里关闭浮动通知提示音。</string>
     <string name="action_open_url">打开链接</string>
     <string name="select_url">选择链接</string>
+    <string name="channel_name_foreground_service">前台服务</string>
+    <string name="channel_description_foreground_service">标识本应用的前台服务正在运行。</string>
+    <string name="notification_title_foreground_service">复制分享正在运行</string>
 </resources>
