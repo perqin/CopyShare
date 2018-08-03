@@ -1,6 +1,5 @@
 package com.perqin.copyshare
 
-import android.app.ActivityManager
 import android.app.NotificationManager
 import android.app.Service
 import android.content.*
@@ -25,6 +24,7 @@ class CopyListenerService : Service() {
         if (!listenerAdded) {
             listenerAdded = true
             clipboardManager.addPrimaryClipChangedListener(onPrimaryClipChangedListener)
+            Log.d(TAG, "Listener added")
         }
         Log.d(TAG, "Service started")
         return START_STICKY
@@ -32,6 +32,7 @@ class CopyListenerService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
+        listenerAdded = false
         clipboardManager.removePrimaryClipChangedListener(onPrimaryClipChangedListener)
         Log.d(TAG, "Service destroyed")
     }
@@ -60,14 +61,5 @@ class CopyListenerService : Service() {
 
     companion object {
         const val TAG = "CopyListenerService"
-
-        fun isStarted(context: Context) : Boolean {
-            val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            // Though getRunningServices is deprecated in API 26, it still returns app's own services
-            @Suppress("DEPRECATION")
-            return am.getRunningServices(Integer.MAX_VALUE).any {
-                CopyListenerService::class.java.name == it.service.className
-            }
-        }
     }
 }

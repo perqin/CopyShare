@@ -20,7 +20,7 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.pref_settings, null)
+            addPreferencesFromResource(R.xml.pref_settings)
         }
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +42,12 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        override fun onResume() {
-            super.onResume()
-            enableServicePreference.isChecked = CopyListenerService.isStarted(activity!!)
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
+            super.onActivityCreated(savedInstanceState)
+            // In case the app is forced stopped before
+            if (enableServicePreference.isChecked) {
+                activity!!.startService(Intent(activity, CopyListenerService::class.java))
+            }
         }
 
         private val enableServicePreference by lazy {
