@@ -38,7 +38,7 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
     val pendingIntent = PendingIntent.getActivity(context, 0,
             Intent.createChooser(intent, context.getString(R.string.chooser_title)), PendingIntent.FLAG_ONE_SHOT)
     return NotificationCompat.Builder(context, if (headsUp) CHANNEL_ID_HEADS_UP else CHANNEL_ID_NORMAL)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_stat_foreground_service)
             .setContentTitle(context.getString(R.string.notification_title_new_text_copied))
             .setContentText(item.text)
             .setPriority(if (headsUp) NotificationCompat.PRIORITY_HIGH else NotificationCompat.PRIORITY_DEFAULT)
@@ -61,7 +61,7 @@ fun getNotificationId() : Int = atomicInteger.incrementAndGet()
 
 fun getForegroundServiceNotification(context: Context): Notification {
     return NotificationCompat.Builder(context, CHANNEL_ID_FOREGROUND_SERVICE)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_stat_foreground_service)
             .setContentTitle(context.getString(R.string.notification_title_foreground_service))
             .setPriority(NotificationCompat.PRIORITY_MIN)
             .build()
