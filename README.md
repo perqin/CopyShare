@@ -8,14 +8,11 @@ Copy and share clipboard content via system share UI.
 
 ## Features
 
-### Notify on copy
+* **Notify on copy.** Heads-up notification is shown when new text is copied or cut.
 
-Heads-up notification is shown when new text is copied or cut.
+* **Pick links in text.** Open links contained in copied text on one tap. Link selection is supported when more than one links are found.
+
+## Screenshots
 
 ![Notify on copy](screenshots/notify-on-copy.png)
-
-### Pick links in text
-
-Open links contained in copied text on one tap. Link selection is supported when more than one links are found.
-
 ![Pick links in text](screenshots/pick-link.png)
