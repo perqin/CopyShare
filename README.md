@@ -1,7 +1,8 @@
 # Copy & Share
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/perqin/CopyShare/blob/master/LICENSE)
-[![GitHub (pre-)release](https://img.shields.io/github/release/qubyte/rubidium/all.svg)](https://github.com/perqin/CopyShare/releases)
+[![GitHub license](https://img.shields.io/github/license/perqin/CopyShare.svg)](https://github.com/perqin/CopyShare/blob/master/LICENSE)
+[![GitHub (pre-)release](https://img.shields.io/github/release/perqin/CopyShare/all.svg)](https://github.com/perqin/CopyShare/releases)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 Copy and share clipboard content via system share UI.
 
