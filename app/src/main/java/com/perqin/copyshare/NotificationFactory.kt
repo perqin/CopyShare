@@ -21,6 +21,7 @@ const val CHANNEL_ID_FOREGROUND_SERVICE = "foreground_service"
 const val NOTIFICATION_ID_FOREGROUND_SERVICE = 1
 // 1 is reserved for foreground service
 val atomicInteger = AtomicInteger(1)
+val requestCodeInteger = AtomicInteger()
 
 fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item?) : Notification? {
     if (item == null) return null
@@ -35,8 +36,8 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
     val intent = Intent(Intent.ACTION_SEND)
     intent.putExtra(Intent.EXTRA_TEXT, item.text)
     intent.type = "text/plain"
-    val pendingIntent = PendingIntent.getActivity(context, 0,
-            Intent.createChooser(intent, context.getString(R.string.chooser_title)), PendingIntent.FLAG_ONE_SHOT)
+    val pendingIntent = PendingIntent.getActivity(context, requestCodeInteger.incrementAndGet(),
+            Intent.createChooser(intent, context.getString(R.string.chooser_title)), 0)
     return NotificationCompat.Builder(context, if (headsUp) CHANNEL_ID_HEADS_UP else CHANNEL_ID_NORMAL)
             .setSmallIcon(R.drawable.ic_stat_foreground_service)
             .setContentTitle(context.getString(R.string.notification_title_new_text_copied))
@@ -51,7 +52,7 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     addAction(R.drawable.ic_link_black_24dp, context.getString(R.string.action_open_url),
-                            PendingIntent.getActivity(context, 0, openUrlIntent, PendingIntent.FLAG_ONE_SHOT))
+                            PendingIntent.getActivity(context, requestCodeInteger.incrementAndGet(), openUrlIntent, 0))
                 }
             }
             .build()
