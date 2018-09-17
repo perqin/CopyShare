@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UrlSelectorActivity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.UrlSelectorActivity" />
 
         <service
             android:name=".CopyListenerService"
@@ -34,11 +38,10 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".UrlSelectorActivity"
-            android:theme="@style/AppTheme.UrlSelectorActivity"
-            android:noHistory="true" />
+        <receiver
+            android:name=".ChatQuoteReceiver"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

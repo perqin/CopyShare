@@ -17,4 +17,9 @@
     <string name="channel_name_foreground_service">前台服务</string>
     <string name="channel_description_foreground_service">标识本应用的前台服务正在运行。</string>
     <string name="notification_title_foreground_service">复制分享正在运行</string>
+    <string name="pref_chat_quote">引用聊天消息</string>
+    <string name="pref_description_chat_quote">在通知中添加“引用”动作用于快速引用聊天消息</string>
+    <string name="quoted_message">被引用的消息</string>
+    <string name="quote">引用</string>
+    <string name="quoted_message_has_been_copied_to_clipboard">被引用的消息已经被复制到剪切板</string>
 </resources>

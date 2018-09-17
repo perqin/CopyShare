@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Copy &amp; Share</string>
-    <string name="pref_description_enable_service">Enable Copy and Share service</string>
     <string name="pref_enable_service">Enable service</string>
-    <string name="pref_description_heads_up_notification">Enable heads-up notification</string>
+    <string name="pref_description_enable_service">Enable Copy and Share service</string>
     <string name="pref_heads_up_notification">Heads-up notification</string>
+    <string name="pref_description_heads_up_notification">Enable heads-up notification</string>
+    <string name="pref_chat_quote">Chat quote</string>
+    <string name="pref_description_chat_quote">Add Quote action to notification for quick quoting</string>
     <string name="notification_title_new_text_copied">New text clipped, click to share</string>
     <string name="notification_title_foreground_service">Copy &amp; Share is running</string>
     <string name="chooser_title">Send clipped text</string>
@@ -15,9 +17,13 @@
     <string name="channel_description_foreground_service">Indicating that the foreground service of this application is running.</string>
     <string name="action_open_url">Open URL</string>
     <string name="select_url">Select URL</string>
+    <string name="quoted_message">Quoted message</string>
+    <string name="quote">Quote</string>
+    <string name="quoted_message_has_been_copied_to_clipboard">Quoted message has been copied to clipboard</string>
 
     <!-- Preference Keys -->
     <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
     <string name="pk_heads_up_notification" translatable="false">HEADS_UP_NOTIFICATION</string>
+    <string name="pk_chat_quote" translatable="false">CHAT_QUOTE</string>
     <string name="toast_you_have_to_disable_the_sound_manually">You have to disable the sound manually in this app\'s notification settings</string>
 </resources>
