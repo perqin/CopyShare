@@ -44,7 +44,7 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
     intent.putExtra(Intent.EXTRA_TEXT, item.text)
     intent.type = "text/plain"
     val pendingIntent = PendingIntent.getActivity(context, requestCodeInteger.incrementAndGet(),
-            Intent.createChooser(intent, context.getString(R.string.chooser_title)), 0)
+            Intent.createChooser(intent, context.getString(R.string.chooser_title)), PendingIntent.FLAG_UPDATE_CURRENT)
     return NotificationCompat.Builder(context, if (headsUp) CHANNEL_ID_HEADS_UP else CHANNEL_ID_NORMAL)
             .setSmallIcon(R.drawable.ic_stat_foreground_service)
             .setContentTitle(context.getString(R.string.notification_title_new_text_copied))
@@ -58,17 +58,16 @@ fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item
                         putStringArrayListExtra(UrlSelectorActivity.EXTRA_URLS, urls)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
-                    addAction(R.drawable.ic_link_black_24dp, context.getString(R.string.action_open_url),
-                            PendingIntent.getActivity(context, requestCodeInteger.incrementAndGet(), openUrlIntent, 0))
+                    addAction(R.drawable.ic_link_black_24dp, context.getString(R.string.action_open_url), PendingIntent.getActivity(
+                            context, requestCodeInteger.incrementAndGet(), openUrlIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                 }
                 if (chatQuote) {
                     val chatQuoteIntent = Intent(context, ChatQuoteReceiver::class.java).apply {
                         action = ChatQuoteReceiver.ACTION_CHAT_QUOTE
                         putExtra(ChatQuoteReceiver.EXTRA_MESSAGE, item.text)
-                        // TODO: Dismiss this notification after quoted (need notification id broadcast to receiver)
                     }
-                    addAction(R.drawable.ic_format_quote_black_24dp, context.getString(R.string.quote),
-                            PendingIntent.getBroadcast(context, requestCodeInteger.incrementAndGet(), chatQuoteIntent, 0))
+                    addAction(R.drawable.ic_format_quote_black_24dp, context.getString(R.string.quote), PendingIntent.getBroadcast(
+                            context, requestCodeInteger.incrementAndGet(), chatQuoteIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                 }
             }
             .build()
