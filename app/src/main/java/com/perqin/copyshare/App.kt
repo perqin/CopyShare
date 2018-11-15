@@ -5,7 +5,10 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import java.io.PrintWriter
+import java.io.StringWriter
 
 /**
  * Author: perqin
@@ -14,6 +17,19 @@ import androidx.annotation.RequiresApi
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
+                val sw = StringWriter()
+                val pw = PrintWriter(sw)
+                throwable.printStackTrace(pw)
+                val st = sw.toString()
+                logToText(this, "Crash caught >>>>>>>>>>>")
+                logToText(this, st)
+
+                Toast.makeText(this, "Crash caught: ${throwable.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel()

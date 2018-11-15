@@ -25,7 +25,7 @@ val atomicInteger = AtomicInteger(1)
 val requestCodeInteger = AtomicInteger()
 
 fun getNotification(context: Context, meta: ClipDescription, item: ClipData.Item?) : Notification? {
-    if (item == null) return null
+    if (item == null || item.text == null) return null
     logClip(context, meta, item)
     if (!meta.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) && !meta.hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML)) {
         return null
