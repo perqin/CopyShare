@@ -21,7 +21,7 @@ class UrlSelectorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_url_selector)
 
-        val urls = intent.getStringArrayListExtra(EXTRA_URLS)
+        val urls = intent.getStringArrayListExtra(EXTRA_URLS) ?: emptyList<String>()
 
         when (urls.size) {
             0 -> finish()

@@ -3,8 +3,8 @@ package com.perqin.copyshare
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.preference.PreferenceManager
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 
 /**
  * Author: perqin

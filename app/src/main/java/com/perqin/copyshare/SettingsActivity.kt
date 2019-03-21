@@ -12,6 +12,12 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q || (Build.VERSION.SDK_INT == Build.VERSION_CODES.P && Build.VERSION.PREVIEW_SDK_INT != 0)) {
+            // Not working so far. Might adapt to some workaround
+            setContentView(R.layout.activity_settings_not_compatible)
+            return
+        }
+
         supportFragmentManager
                 .beginTransaction()
                 .replace(android.R.id.content, SettingsFragment())
@@ -51,10 +57,10 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private val enableServicePreference by lazy {
-            findPreference(getString(R.string.pk_enable_service)) as SwitchPreference
+            findPreference<SwitchPreference>(getString(R.string.pk_enable_service))!!
         }
         private val headsUpNotificationPreference by lazy {
-            findPreference(getString(R.string.pk_heads_up_notification)) as SwitchPreference
+            findPreference<SwitchPreference>(getString(R.string.pk_heads_up_notification))!!
         }
     }
 }

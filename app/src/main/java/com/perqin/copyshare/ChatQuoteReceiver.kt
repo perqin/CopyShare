@@ -19,7 +19,7 @@ class ChatQuoteReceiver : BroadcastReceiver() {
                             }
                         }
                     }
-            ContextCompat.getSystemService(context, ClipboardManager::class.java)?.primaryClip = clip
+            ContextCompat.getSystemService(context, ClipboardManager::class.java)?.setPrimaryClip(clip)
             Toast.makeText(context, context.getString(R.string.quoted_message_has_been_copied_to_clipboard), Toast.LENGTH_LONG).show()
         }
     }

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
+    <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pk_enable_service"
         android:summary="@string/pref_description_enable_service"
         android:title="@string/pref_enable_service" />
 
-    <SwitchPreference
+    <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pk_heads_up_notification"
         android:summary="@string/pref_description_heads_up_notification"
         android:title="@string/pref_heads_up_notification" />
 
-    <SwitchPreference
+    <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pk_chat_quote"
         android:summary="@string/pref_description_chat_quote"
         android:title="@string/pref_chat_quote" />
 
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>

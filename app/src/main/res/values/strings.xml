@@ -1,4 +1,9 @@
 <resources>
+    <!-- Preference Keys -->
+    <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
+    <string name="pk_heads_up_notification" translatable="false">HEADS_UP_NOTIFICATION</string>
+    <string name="pk_chat_quote" translatable="false">CHAT_QUOTE</string>
+
     <string name="app_name">Copy &amp; Share</string>
     <string name="pref_enable_service">Enable service</string>
     <string name="pref_description_enable_service">Enable Copy and Share service</string>
@@ -20,10 +25,6 @@
     <string name="quoted_message">Quoted message</string>
     <string name="quote">Quote</string>
     <string name="quoted_message_has_been_copied_to_clipboard">Quoted message has been copied to clipboard</string>
-
-    <!-- Preference Keys -->
-    <string name="pk_enable_service" translatable="false">ENABLE_SERVICE</string>
-    <string name="pk_heads_up_notification" translatable="false">HEADS_UP_NOTIFICATION</string>
-    <string name="pk_chat_quote" translatable="false">CHAT_QUOTE</string>
     <string name="toast_you_have_to_disable_the_sound_manually">You have to disable the sound manually in this app\'s notification settings</string>
+    <string name="incompatibility_detail">Apps cannot access to clipboard content on Android Q unless it gets focus, thus this app cannot work properly. We are sorry for inconvenience.</string>
 </resources>
