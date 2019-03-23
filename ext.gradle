@@ -6,12 +6,12 @@ ext {
     storePassword = 'com.perqin.copyshare'
 }
 
-def propFile = rootProject.file("credentials.properties")
+def propFile = rootProject.file("keystore.properties")
 if (propFile.canRead()) {
     def prop = new Properties()
     prop.load(new FileInputStream(propFile))
-    ext.keyAlias = keystoreProperties['keyAlias']
-    ext.keyPassword = keystoreProperties['keyPassword']
-    ext.storeFile = file(keystoreProperties['storeFile'])
-    ext.storePassword = keystoreProperties['storePassword']
+    ext.keyAlias = prop['keyAlias']
+    ext.keyPassword = prop['keyPassword']
+    ext.storeFile = file(prop['storeFile'])
+    ext.storePassword = prop['storePassword']
 }
