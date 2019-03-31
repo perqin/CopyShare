@@ -2,7 +2,7 @@
 ext {
     keyAlias = 'main'
     keyPassword = 'com.perqin.copyshare'
-    storeFile = rootProject.file('debug.keystore.jks')
+    storeFile = rootProject.file("${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore")
     storePassword = 'com.perqin.copyshare'
 }
 

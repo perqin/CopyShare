@@ -12,7 +12,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q || (Build.VERSION.SDK_INT == Build.VERSION_CODES.P && Build.VERSION.PREVIEW_SDK_INT != 0)) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P || (Build.VERSION.SDK_INT == Build.VERSION_CODES.P && Build.VERSION.PREVIEW_SDK_INT != 0)) {
             // Not working so far. Might adapt to some workaround
             setContentView(R.layout.activity_settings_not_compatible)
             return
