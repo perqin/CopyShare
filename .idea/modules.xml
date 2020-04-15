@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CopyShare.iml" filepath="$PROJECT_DIR$/CopyShare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CopyShare.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CopyShare.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/_perqin.CopyShare.iml" filepath="$PROJECT_DIR$/.idea/modules/_perqin.CopyShare.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
