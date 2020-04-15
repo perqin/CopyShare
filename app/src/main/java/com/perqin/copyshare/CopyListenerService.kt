@@ -37,28 +37,10 @@ class CopyListenerService : Service() {
         Log.d(TAG, "Service destroyed")
     }
 
-    private fun notifyUserOfClipItem(meta: ClipDescription, item: ClipData.Item?) {
-        // Now we just use Notification
-        val notification = getNotification(this, meta, item)
-        if (notification != null) {
-            val id = getNotificationId()
-            notificationManager.notify(id, notification)
-            uiHandler.postDelayed({
-                notificationManager.cancel(id)
-            }, 8000)
-        }
-    }
-
     private var listenerAdded = false
     private val clipboardManager by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
-    private val notificationManager by lazy { getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
-    private val uiHandler by lazy { Handler(Looper.getMainLooper()) }
     private val onPrimaryClipChangedListener = ClipboardManager.OnPrimaryClipChangedListener {
-        if (clipboardManager.primaryClip != null && clipboardManager.primaryClipDescription != null) {
-            for (i in 1..clipboardManager.primaryClip!!.itemCount) {
-                notifyUserOfClipItem(clipboardManager.primaryClipDescription!!, clipboardManager.primaryClip!!.getItemAt(i - 1))
-            }
-        }
+        notifyUserOfClipItem()
     }
 
     companion object {

@@ -22,5 +22,8 @@
     <string name="quoted_message">被引用的消息</string>
     <string name="quote">引用</string>
     <string name="quoted_message_has_been_copied_to_clipboard">被引用的消息已经被复制到剪切板</string>
-    <string name="incompatibility_detail">在Android Q上，应用只有在取得焦点的时候能够访问剪切板，因此本应用无法正常工作。给您带来不变我们深感歉意。</string>
+    <string name="detect_clipboard_content">读取剪切板</string>
+    <string name="detecting_clipboard_content">正在读取剪切板内容</string>
+    <string name="ok">好的</string>
+    <string name="clipboard_access_restricted">从Android P开始非前台应用无法监听剪切板内容。请该用通知中心的快捷设置图块。</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
@@ -11,12 +12,6 @@ import androidx.preference.SwitchPreference
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P || (Build.VERSION.SDK_INT == Build.VERSION_CODES.P && Build.VERSION.PREVIEW_SDK_INT != 0)) {
-            // Not working so far. Might adapt to some workaround
-            setContentView(R.layout.activity_settings_not_compatible)
-            return
-        }
 
         supportFragmentManager
                 .beginTransaction()
@@ -33,12 +28,20 @@ class SettingsActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
 
             enableServicePreference.setOnPreferenceChangeListener { _, checkedObj ->
-                if (checkedObj as Boolean) {
-                    activity!!.startService(Intent(activity, CopyListenerService::class.java))
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    AlertDialog.Builder(requireContext())
+                            .setMessage(R.string.clipboard_access_restricted)
+                            .setPositiveButton(R.string.ok, null)
+                            .show()
+                    false
                 } else {
-                    activity!!.stopService(Intent(activity, CopyListenerService::class.java))
+                    if (checkedObj as Boolean) {
+                        activity!!.startService(Intent(activity, CopyListenerService::class.java))
+                    } else {
+                        activity!!.stopService(Intent(activity, CopyListenerService::class.java))
+                    }
+                    true
                 }
-                true
             }
             headsUpNotificationPreference.setOnPreferenceChangeListener { _, checkedObj ->
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && checkedObj as Boolean) {

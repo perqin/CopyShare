@@ -30,6 +30,20 @@
             android:name=".CopyListenerService"
             android:enabled="true" />
 
+        <service
+            android:name=".QsTileService"
+            android:icon="@drawable/ic_stat_foreground_service"
+            android:label="@string/detect_clipboard_content"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:enabled="@bool/v24">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+        </service>
+
         <receiver android:name=".StartServiceReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

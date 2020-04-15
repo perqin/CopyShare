@@ -26,5 +26,8 @@
     <string name="quote">Quote</string>
     <string name="quoted_message_has_been_copied_to_clipboard">Quoted message has been copied to clipboard</string>
     <string name="toast_you_have_to_disable_the_sound_manually">You have to disable the sound manually in this app\'s notification settings</string>
-    <string name="incompatibility_detail">Apps cannot access to clipboard content on Android Q unless it gets focus, thus this app cannot work properly. We are sorry for inconvenience.</string>
+    <string name="detect_clipboard_content">Detect clipboard</string>
+    <string name="detecting_clipboard_content">Detecting clipboard content</string>
+    <string name="ok">OK</string>
+    <string name="clipboard_access_restricted">Clipboard access is restricted since Android P. Use the Quick Settings Tile instead to detect clipboard content.</string>
 </resources>
