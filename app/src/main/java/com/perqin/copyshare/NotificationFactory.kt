@@ -79,6 +79,7 @@ fun getForegroundServiceNotification(context: Context): Notification {
     return NotificationCompat.Builder(context, CHANNEL_ID_FOREGROUND_SERVICE)
             .setSmallIcon(R.drawable.ic_stat_foreground_service)
             .setContentTitle(context.getString(R.string.notification_title_foreground_service))
+            .setContentIntent(PendingIntent.getActivity(context, 0, Intent(context, DetectDialogActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT))
             .setPriority(NotificationCompat.PRIORITY_MIN)
             .build()
 }

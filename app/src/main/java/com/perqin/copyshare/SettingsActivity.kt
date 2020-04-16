@@ -28,20 +28,20 @@ class SettingsActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
 
             enableServicePreference.setOnPreferenceChangeListener { _, checkedObj ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                val checked = checkedObj as Boolean
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && checked) {
                     AlertDialog.Builder(requireContext())
+                            // TODO: Update clipboard_access_restricted
                             .setMessage(R.string.clipboard_access_restricted)
                             .setPositiveButton(R.string.ok, null)
                             .show()
-                    false
-                } else {
-                    if (checkedObj as Boolean) {
-                        activity!!.startService(Intent(activity, CopyListenerService::class.java))
-                    } else {
-                        activity!!.stopService(Intent(activity, CopyListenerService::class.java))
-                    }
-                    true
                 }
+                if (checked) {
+                    activity!!.startService(Intent(activity, CopyListenerService::class.java))
+                } else {
+                    activity!!.stopService(Intent(activity, CopyListenerService::class.java))
+                }
+                true
             }
             headsUpNotificationPreference.setOnPreferenceChangeListener { _, checkedObj ->
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && checkedObj as Boolean) {
