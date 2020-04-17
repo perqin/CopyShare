@@ -29,5 +29,5 @@
     <string name="detect_clipboard_content">Detect clipboard</string>
     <string name="detecting_clipboard_content">Detecting clipboard content</string>
     <string name="ok">OK</string>
-    <string name="clipboard_access_restricted">Clipboard access is restricted since Android P. Use the Quick Settings Tile instead to detect clipboard content.</string>
+    <string name="clipboard_access_restricted">Clipboard access is restricted since Android P. Click the foreground notification instead to detect clipboard content.</string>
 </resources>

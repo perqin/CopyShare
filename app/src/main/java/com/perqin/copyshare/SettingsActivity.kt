@@ -31,7 +31,6 @@ class SettingsActivity : AppCompatActivity() {
                 val checked = checkedObj as Boolean
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && checked) {
                     AlertDialog.Builder(requireContext())
-                            // TODO: Update clipboard_access_restricted
                             .setMessage(R.string.clipboard_access_restricted)
                             .setPositiveButton(R.string.ok, null)
                             .show()
