@@ -25,5 +25,5 @@
     <string name="detect_clipboard_content">读取剪切板</string>
     <string name="detecting_clipboard_content">正在读取剪切板内容</string>
     <string name="ok">好的</string>
-    <string name="clipboard_access_restricted">从Android P开始非前台应用无法监听剪切板内容。请点击通知栏的前台通知来触发剪切板内容识别。</string>
+    <string name="clipboard_access_restricted">从Android Q开始非前台应用无法监听剪切板内容。请点击通知栏的前台通知来触发剪切板内容识别。</string>
 </resources>

@@ -29,16 +29,16 @@ class SettingsActivity : AppCompatActivity() {
 
             enableServicePreference.setOnPreferenceChangeListener { _, checkedObj ->
                 val checked = checkedObj as Boolean
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && checked) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && checked) {
                     AlertDialog.Builder(requireContext())
                             .setMessage(R.string.clipboard_access_restricted)
                             .setPositiveButton(R.string.ok, null)
                             .show()
                 }
                 if (checked) {
-                    activity!!.startService(Intent(activity, CopyListenerService::class.java))
+                    requireActivity().startService(Intent(activity, CopyListenerService::class.java))
                 } else {
-                    activity!!.stopService(Intent(activity, CopyListenerService::class.java))
+                    requireActivity().stopService(Intent(activity, CopyListenerService::class.java))
                 }
                 true
             }
@@ -54,7 +54,7 @@ class SettingsActivity : AppCompatActivity() {
             super.onActivityCreated(savedInstanceState)
             // In case the app is forced stopped before
             if (enableServicePreference.isChecked) {
-                activity!!.startService(Intent(activity, CopyListenerService::class.java))
+                requireActivity().startService(Intent(activity, CopyListenerService::class.java))
             }
         }
 
