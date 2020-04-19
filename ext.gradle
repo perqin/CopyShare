@@ -1,17 +1,23 @@
-// Default values
-ext {
-    keyAlias = 'main'
-    keyPassword = 'com.perqin.copyshare'
-    storeFile = rootProject.file("${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore")
-    storePassword = 'com.perqin.copyshare'
+/**
+ * Get build parameter in the following priority:
+ * + Environment variable
+ * + Gradle properties (gradle.properties)
+ * + credentials.properties
+ * For simplicity, no 'dot' is allowed
+ */
+def prop = null
+def propFile = rootProject.file("local.properties")
+if (propFile.canRead()) {
+    prop = new Properties()
+    prop.load(new FileInputStream(propFile))
+}
+def getParameter = { name ->
+    return System.getenv(name) ?: project.findProperty(name) ?: (prop?.getProperty(name)) ?: ''
 }
 
-def propFile = rootProject.file("keystore.properties")
-if (propFile.canRead()) {
-    def prop = new Properties()
-    prop.load(new FileInputStream(propFile))
-    ext.keyAlias = prop['keyAlias']
-    ext.keyPassword = prop['keyPassword']
-    ext.storeFile = file(prop['storeFile'])
-    ext.storePassword = prop['storePassword']
+ext {
+    keyAlias = getParameter('keyAlias')
+    keyPassword = getParameter('keyPassword')
+    storeFile = getParameter('storeFile')
+    storePassword = getParameter('storePassword')
 }
